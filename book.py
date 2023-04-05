@@ -7,14 +7,10 @@ Website: http://books.toscrape.com/catalogue/page-1.html
 import requests
 import bs4
 
-"""
-Following code is to get content from one item in book_list
-"""
 print("Checking if the first book on this specified page has a two star rating...")
 
 base_url = "http://books.toscrape.com/catalogue/page-{}.html"
 response = requests.get(base_url.format(1))
-
 soup = bs4.BeautifulSoup(response.text, "lxml")
 book_list = soup.select(".product_pod")
 
@@ -27,9 +23,6 @@ else:
     print(first_title)
     print("")
 
-"""
-Following code is to iterate through all the books on a page
-"""
 
 print("Getting a list of book titles with two star ratings from pages 1 through 50 ...")
 
@@ -38,7 +31,6 @@ two_star_titles = []
 for i in range(1,51):
     base_url = "http://books.toscrape.com/catalogue/page-{}.html"
     response = requests.get(base_url.format(i))
-
     soup = bs4.BeautifulSoup(response.text, "lxml")
     book_list = soup.select(".product_pod")
 
